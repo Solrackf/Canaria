@@ -1,0 +1,48 @@
+{% extends 'baseingreso.html' %}
+
+{% block head %}
+<title>Inicio</title> 
+{% endblock %}
+
+{% block body %}
+
+
+
+<h1 class="float-left"><small>Bienvenido, {{current_user.firstname}}</small></h1>
+<a href="/dashboard/new" class="btn btn-info float-right" >+ Nueva publicación</a>
+    <hr><br>
+    <div class="container" align="center"><h2>¡Abajo están tus publicaciones!</h2>
+    {% for post in posts %}
+    
+    <h2><b>{{post.title}}</b></h2>
+    {% if post.author %}
+    <small>By: {{post.author}} </small>
+    {% else %}
+    <small>By:Unknown</small>
+    {% endif %}
+    <small>Date: {{post.date}}</small><br><br>
+    <p><b>{{post.content}}</b></p>
+    <a href="/dashboard/delete/{{post.id}}" style="color: aliceblue;" class="btn btn-success">Borrar</a>
+    <a href="/dashboard/edit/{{post.id}}" style="color: aliceblue;" class="btn btn-info">Editar</a>
+    <hr class="style2">
+    <br>
+    {% endfor %}
+     </div>
+
+
+{% if splitf != '' %}
+{% for fr in splitf %}
+{% set post1 = blogposts.query.filter_by(username=fr).order_by(blogposts.date.desc()).all() %}
+
+{% for posts in post1 %}
+
+<h1>{{posts.title}}</h1>
+<h1>{{posts.content}}</h1>
+<h1>{{posts.date}}</h1><br>
+emddd
+
+
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% endblock %}

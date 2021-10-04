@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="header">
+    <div class="title">
+        <p >Serinus Canaria DoméstiKa</p>
+    </div>
+    
+    <div class="subtitle">
+        <p> <br>La mejor red social de imágenes</p>
+    </div>
+    <div class="description">
+        <br>
+        <p> <br> Lleva tu imaginación a las estrellas, comparte y deslúmbrate<br> con maravillosas fotografías mientras conoces a nuevas <br>personas. </p>
+    </div>
+        <img class="background" src="../static/images/Circles (1).png" >
+        <img class="picture" src="../static/images/PrincipalSVG.png">
+    
+</div>
+
+<div class="form">
+    <form action="/login" method="POST">
+        <div class="sesion" style="text-align: center;"> 
+             <p> Inicio de sesión</p> 
+             <p style="font-size: 15px; color:darkgrey;">Por favor ingresa a tu cuenta</p>
+        
+        </div>
+       
+        <div class="input_text">
+            <ul><input  class="textfield"  type="text" name="username" placeholder="ingresa tu usuario" ></ul>
+            <ul><input class="textfield"  type="password" name="password" placeholder="ingresa tu contraseña"><br></ul>
+            <ul  ><input  class="boton" type="submit" value="Ingresar" ></ul>
+            <p style="text-align: center;">¿No tienes una cuenta?</p>
+            <ul style="text-align: center; margin-left: -30px;margin-top: -20; font-size: 15px;"><a href="/singup">Registrate</a></ul>
+           
+        </div>
+
+    </form>
+</div>
+        
+</div>
+
+
+
+ 
+{% endblock %}

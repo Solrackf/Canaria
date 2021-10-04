@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="header">
+    <div class="title">
+        <p >Serinus Canaria DoméstiKa</p>
+    </div>
+    
+    <div class="subtitle">
+        <p> <br>La mejor red social de imágenes</p>
+    </div>
+    <div class="description">
+        <br>
+        <p> <br> Lleva tu imaginación a las estrellas, comparte y deslúmbrate<br> con maravillosas fotografías mientras conoces a nuevas <br>personas. </p>
+    </div>
+        <img class="background" src="../static/images/Circles (1).png" >
+        <img class="picture" src="../static/images/PrincipalSVG.png">
+    
+</div>
+
+<div class="form-register">
+    <form action="/register" method="POST">
+        <div class="sesion" style="text-align: center;"> 
+             <p> Registro de usuario</p> 
+             <p style="font-size: 15px; color:darkgrey;">Por favor crea tu cuenta</p>
+        
+        </div>
+       
+        <div class="input_text">
+            
+            <ul><input class="textfield" type="text" placeholder="Nombre" name="first"></ul>
+            <ul><input class="textfield" type="text" placeholder="Apellido" name="last"></ul>
+            <ul><input  class="textfield"  type="text" name="email" placeholder="ingresa tu correo electrónico" ></ul>
+            <ul><input class="textfield" type="text" placeholder="Usuario" name="username" required title="Username must contain at least 6 or more characters"></ul>
+            <ul><input class="textfield" type="password" placeholder="Contraseña" name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></ul>
+            <ul><input class="textfield" type="password" placeholder="Confirmar contraseña" name="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></ul>
+            <ul><input type="date" name="date" ></ul>
+            <ul style="font-size: 13px;"><input class="radio" type="radio" name="gen" value="female">Femenino <input  type="radio" name="gen" value="male">Masculino</ul>
+            <ul style="font-size: 10px;" id="terms">Al clickear Crear cuenta, usted acepta nuestros <a href="">Terms</a> y además <br>a leído nuestras <a href="">Politicas</a>, incluyendo <a href="">el uso</a>.</ul>
+            <ul style="top: 800px;"><input class="boton"  type="submit" value="Registrarse"></ul>
+         
+        
+        </div>
+    </form>
+</div>
+        
+</div>
+
+{% endblock %}
