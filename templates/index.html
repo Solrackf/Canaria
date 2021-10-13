@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<div>
+    <img class="index-canario" src="../static/images/image.png" alt="">
+</div>
+
+<div class="form-login" >
+    <form action="/login" method="POST">
+        <div class="sesion" > 
+            <h4 style="font-size: 40px; color: yellow;"> Serinus Canaria <br>Doméstica</h4> 
+            
+        
+        </div>
+       
+        <div class="input_text">
+            <ul><input  class="textfield"  type="text" name="username" placeholder="ingresa tu usuario" ></ul>
+            <ul><input class="textfield"  type="password" name="password" placeholder="ingresa tu contraseña"><br></ul>
+            <ul  ><input  class="boton" type="submit" value="Iniciar sesión" ></ul>
+            <h1 style="font-size: 25px;font-size: 20px;"> ¿No tienes una cuenta?</h1> 
+            <a  href="/register" style="font-size: 20px;color: yellow;">Regístrate</a>
+           
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

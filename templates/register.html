@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div>
+    <img class="index-canario" src="../static/images/image.png" alt="">
+</div>
+<div class="form-register" >
+    <form action="/register" method="POST">
+        <div class="sesion" style="text-align: center;"> 
+             <h4 style="font-size: 30px;"> Registro </h4> 
+            
+        
+        </div>
+       
+        <div class="input_text">
+            <ul><input  class="textfield"  type="text" name="email" placeholder="correo electrónico" ></ul>
+            <ul><input class="textfield" type="text" placeholder="Nombre" name="name"></ul>
+            <ul><input class="textfield" type="text" placeholder="Usuario" name="username" required title="Username must contain at least 6 or more characters"></ul>
+            <ul><input class="textfield" type="password" placeholder="Contraseña" name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más"></ul>
+            <ul><input class="textfield" type="password" placeholder="Confirmar contraseña" name="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></ul>
+            <ul><input type="date" class="calendar" name="date" ></ul>
+            <ul style="font-size: 13px;"><input class="radio" type="radio" name="gen" value="female">Femenino <input  type="radio" name="gen" value="male">Masculino</ul>
+            <ul style="font-size: 10px;" class="conditions" id="terms">Al clickear Registrarse, usted acepta nuestros <a href="">Terms</a> y además <br>a leído nuestras <a href="">Politicas</a>, incluyendo <a href="">el uso de Cookies</a>.</ul>
+            <ul style="top: 800px;"><input class="boton"  type="submit" value="Registrarse"></ul>
+            <h1 style="font-size: 25px;font-size: 20px;"> ¿Ya tienes una cuenta?</h1> 
+            <a  href="/" style="font-size: 20px;">Iniciar sesión</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

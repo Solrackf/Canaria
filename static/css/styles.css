@@ -1,0 +1,89 @@
+body{
+    background: linear-gradient(to right, #232526, #414345);
+}
+
+a{
+    color: rgb(255, 255, 255);
+}
+.form-login{
+   
+    color: aliceblue;
+    border:5px groove;
+    width: 350px;
+    height: 500px;
+    margin-top: -450px;
+    margin-left: 600px;
+    text-align: center;
+    border-color: yellow;
+   
+    
+     
+}
+
+.form-register{
+    color: aliceblue;
+    border:5px groove;
+    width: 350px;
+    height: 650px;
+    margin-top: -530px;
+    margin-left: 600px;
+    text-align: center;
+    border-color: yellow;
+}
+.textfield{
+    font-size: 15px;
+    margin-left: -40px;
+    width: 250px;
+    height: 30px;
+    border-color: yellow;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.radio{
+    margin-left: -40px;
+}
+.calendar{
+    border-radius: 3px;
+    border-color: yellow;
+    height: 25px;
+    margin-left: -40px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.conditions{
+    margin-left: -40px;
+}
+.boton{
+    background: linear-gradient(to right, #fe8c00, #f83600); 
+    color: aliceblue;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-left: -40px;
+    width: 130px;
+    height: 40px;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.index-canario{
+    
+    width: 150px;
+    height: 400px;
+    margin-top: 150px;
+    margin-left: 450px;
+    
+}
+nav{
+    color: aliceblue;
+}
+.panel-lol{
+    width: 220px;
+}

@@ -1,0 +1,47 @@
+{% extends 'baseingreso.html' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light btn-lg" >
+  <a class="navbar-brand" href="/" style="color: white;font-size: 30px;" >Serinus Canaria Doméstika</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 70px;" >
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/" style="color: white;margin-right: 15px;">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/profile" style="color: white;margin-right: 15px;">Perfil</a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/friends" style="color: white;margin-right: 15px;">Amigos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0 " href="/logout" tabindex="-1" aria-disabled="false" style="color: white;margin-right: 15px;">Cerrar sesión</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 float-right" action='/search' method="POST">
+      <input class="form-control mr-sm-2" type="search" placeholder="usuario" aria-label="Search" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+  <p align="center">Amigos</p>
+  <div align="center" class="col" style="width: 50%;margin-left: 25%;">
+  {% for user in friends %}
+  {% set users = User.query.filter_by(username=user).first() %}
+  {% if (users != '') and (users != None) %}
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <embed src="{{users.profile_pic}}" width="10%" height="10%"><br>
+<a href="/user/{{users.username}}" style="top: 100%;">{{ users.firstname }}
+{{users.lastname}}</a><br>
+<a href="remfriend/{{users.username}}" class="btn btn-small btn-sm btn-danger" >Amigo</a>
+</div></div>
+{% endif %}
+{% else %}
+No tienes amigos agregados
+{% endfor %}
+</div>
+{% endblock %}
