@@ -5,7 +5,7 @@
 
   
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  
 
   <style>
     .choose_file{
@@ -48,25 +48,25 @@ $('.comments') .hide()
 <div class="main container-fluid">
  </div>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Serinus Canaria Doméstika</a>
+  <nav class="navbar navbar-expand-lg navbar-light btn-lg" >
+    <a class="navbar-brand" href="/" style="color: white;font-size: 30px;" >Serinus Canaria Doméstika</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 70px;" >
+      <ul class="navbar-nav mr-auto" >
         <li class="nav-item active">
-          <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/" style="color: white;margin-right: 15px;">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/profile">Perfil</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/profile" style="color: white;margin-right: 15px;">Perfil</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/friends">Amigos</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="/friends" style="color: white;margin-right: 15px;">Amigos</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link " href="/logout" tabindex="-1" aria-disabled="false">Cerrar sesión</a>
+          <a class="btn btn-outline-success my-2 my-sm-0 " href="/logout" tabindex="-1" aria-disabled="false" style="color: white;margin-right: 15px;">Cerrar sesión</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0 float-right" action='/search' method="POST">
@@ -77,29 +77,29 @@ $('.comments') .hide()
   </nav>
   <!-- main -->
   <main class="container col-md-12"id="main1" style="margin-top: 30px;">
-    <div class="row" style="margin-left: -60px">
+    <div class="row" style="margin-left: 10px">
       <div class="col-md-3">
         
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="border-color: yellow;">
           <div class="panel-body">
-            <h4>{{current_user.firstname}} {{current_user.lastname}}</h4>
+            <h4 >{{current_user.name}}</h4>
             <p>Sobre mi: {{current_user.about_me}}</p>
             <p>Ciudad: {{current_user.location}}</p>
           </div>
         </div>
         
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4><a href="/friendreq">Solicitudes de amistad</a></h4>
+        <div class="panel panel-default" style="border-color: yellow;">
+          <div class="panel-body" >
+            <h4><a href="/friendreq" style="color: white;margin-left: 50px;">Solicitudes de amistad</a></h4>
             <ul>
               
                 {% for req in r %}
                 <li>
-                  {%set name=User.query.filter_by(username=req.user_from).first().firstname +" "+User.query.filter_by(username=req.user_from).first().lastname%}
+                  {%set name=User.query.filter_by(username=req.user_from).first().name%}
                 <a href="/user/{{req.user_from}}">{{name}}</a>
                 <form action="/accept/{{req.id}}" method="POST">
                   <small><button type="Submit" value="Accept" name="acccept" class="btn btn-success btn-sm float-left col-sm-6" style="text-align: center;">Aceptar </button></small></form>
-                  <form action="/reject/{{req.id}}" method="POST"><input type="Submit" value="Reject" name="reject" class="btn btn-danger btn-sm float-right col-sm-6" style=""></form>
+                  <form action="/reject/{{req.id}}" method="POST"><input type="Submit" value="Rechazar" name="reject" class="btn btn-danger btn-sm float-right col-sm-6" ></form>
 
                 
               </li><br><hr>
@@ -128,8 +128,8 @@ $('.comments') .hide()
         
         <form method="post" action="/dashboard/new" enctype="multipart/form-data">
           <div class="input-group">
-            <div class="choose_file">
-              <span>Elegir foto</span>
+            <div class="choose_file"style="width: 100px;">
+              <span >Elegir foto</span>
               <input name="media" type="file" >
           </div>
             <input class="form-control" type="text" name="content" placeholder="Realizar publicación..." name="content"><br><br>

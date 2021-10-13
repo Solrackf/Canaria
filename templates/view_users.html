@@ -4,8 +4,8 @@
 {% block body %}
 
 
-        <div class="tabla_user" style="font-size: 15px; text-align: center;width:700px;margin-left: 400px;">
-			<h3 class="page-header text-primary"><i class="fa fa-users"> Ver usuarios</i></h3>
+        <div class="tabla_user" style="font-size: 15px; text-align: center;width:900px;margin-left: 300px;">
+			<h3 class="page-header text-primary"><i class="fa fa-users" style="color: yellow;">  Usuarios</i></h3>
 			 {% with messages = get_flashed_messages(with_categories=true) %}
   				            {% if messages %}
     					        {% for category,message in messages %}
@@ -13,36 +13,84 @@
     					        {% endfor %}
   				            {% endif %}
 			            {% endwith %}
-			<table  class="table table-bordered">
+			<table  class="table table-bordered" style="color: white;">
 				<thead>
 					<tr>
 						<th style="text-align:center">ID</th>
 						<th style="text-align:center">Usuario</th>
 						<th style="text-align:center">Nombre</th>
-						<th style="text-align:center">Apellido</th>
 						<th style="text-align:center">Correo electronico</th>
 						<th style="text-align:center">Género</th>
 						<th style="text-align:center">Ciudad</th>
 						<th style="text-align:center">Eliminar</th>
+						<th style="text-align:center">Editar</th>
+						
 						
 					</tr>
 				</thead>
 				<tbody>
                     {% for data in res %}
 					<tr>
-						<td style="text-align:center">{{loop.index}}</td>
+						<td style="text-align:center">{{data.id}}</td>
 						<td>{{data.username}}</td>
-						<td style="text-align:center">{{data.firstname}}</td>
-						<td>{{data.lastname}}</td>
+						<td style="text-align:center">{{data.name}}</td>
 						<td>{{data.email}}</td>
 						<td style="text-align:center">{{data.gender}}</td>
 						<td>{{data.location}}</td>
+						
+						
+                
+                		
 
 						<td style="text-align:center"><a href="{{url_for('delete_users',id=data['id'])}}" class="btn btn-danger">Borrar</a></td>
-						<div class="media-body">
+						
+						<div class="container">
+							<td><button style="margin-left: -12px;background: linear-gradient(to right, #fe8c00, #f83600); border-color: yellow;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1"><Span class="pull-right"><a >Editar perfil</a></Span></button></td>
+							
+							<div class="modal fade" id="myModal1" role="dialog">
+							  <div class="modal-dialog">
+							  
+							   
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title"></h4>
+								  </div>
+								  <!--
+									
+								  -->
+								  <div class="modal-body">
+									<form action="/profile/edit/{{data.id}}" method="POST" class="form form-class" enctype="multipart/form-data">
+									  Nombre: <input type="text" class="form-control"value="{{data.name}}" name="firstname"></small><br>
+									  Usuario: <input type="text" class="form-control"value="{{data.username}}" name="username"><br>
+									  Correo Electronico : <input type="email" class="form-control"value="{{data.email}}" name="email"><br>
+									  Sobre mi : <input type="text" class="form-control"value="{{data.about_me}}" name="about_me"><br>
+									  Género : <input type="text" class="form-control"value="{{data.gender}}" name="gender"><br>
+									  Ciudad : <input type="text" class="form-control"value="{{data.location}}" name="location"><br>
+									  {% if current_user.rol == 'superadmin'  %}
+									  Privilegios: <input type="radio" class="checkbox" name="rol" style="width: 15px;height: 15px;" value="admin" {% if data.rol == "admin" %} checked {% endif %}>
+									  {% endif %}
+									  <label class="btn btn-default btn-file">
+										Foto de perfil <input type="file" name="file"  class="form-control" style="display: none;"><br>
+									</label><br>
+									  <input type="submit" value="Guardar" class="form-control" >
+								  </form>
+								</div>
+								</div>
+								
+							  </div>
+							</div>
+							
+						  </div>
+						  
+						  <div class="media-body">
 							
 					</div>
 					</tr>
+<!---------------------------------------------------------------------------------->
+
+
+<!---------------------------------------------------------------------------------->
 					<div class="container">
               
 						

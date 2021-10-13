@@ -1,45 +1,44 @@
 {% extends "baseingreso.html" %}
 
-{% block head %} 
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style_pro.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bt.css') }}">
-<script src="{{ url_for('static', filename='js/bt.js') }}"></script>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/bt.js') }}"></script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   <title>Perfil</title>
   {% endblock %}
 
 {% block body %}
- 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Serinus Canaria Doméstika</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/profile">Perfil</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/friends">Amigos</a>
-        </li>
-        
-        <li class="nav-item active">
-          <a class="nav-link " href="/logout" tabindex="-1" aria-disabled="false">Cerrar sesión</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0 float-right" action='/search' method="POST">
-        <input class="form-control mr-sm-2" type="search" placeholder="usuario" aria-label="Search" name="search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-light btn-lg" >
+  <a class="navbar-brand" href="/" style="color: white;font-size: 30px;" >Serinus Canaria Doméstika</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 70px;" >
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/" style="color: white;margin-right: 15px;">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/profile" style="color: white;margin-right: 15px;">Perfil</a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/friends" style="color: white;margin-right: 15px;">Amigos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="btn btn-outline-success my-2 my-sm-0 " href="/logout" tabindex="-1" aria-disabled="false" style="color: white;margin-right: 15px;">Cerrar sesión</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 float-right" action='/search' method="POST">
+      <input class="form-control mr-sm-2" type="search" placeholder="usuario" aria-label="Search" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
   <script>
     
     jQuery(document).ready(function($) {
@@ -56,11 +55,11 @@ $('.comments') .hide()
   
   <main class="container">
     <div class="row">
-        <div class="panel panel-default"style="height: 350px">
-          <div class="panel-body">
+        <div class="panel panel-default" style="height: 350px;width: 200px; margin-left: -100px;border-color:yellow ;">
+          <div class="panel-body" >
             <h4>Editar perfil</h4>
-            <form method="post" action="/profile/edit1/{{current_user.id}}">
-              <div class="form-group">
+            <form method="post" action="/profile/edit1/{{current_user.id}}" >
+              <div class="form-group" >
                 <h5>Sobre mi</h5>
                 <input class="form-control" type="text" name="status" placeholder="Sobre mi" value="{{current_user.about_me}}" name="about">
                 <h5>Ciudad</h5>
@@ -76,7 +75,7 @@ $('.comments') .hide()
                 
                 <input type="radio" class="checkbox" name="private" style="width: 15px;height: 15px;" value="no" {% if current_user.isprivate == 0 %} checked {% endif %}><br>
               </div>
-                <input class="btn btn-primary" type="submit" name="update_profile" value="Guardar cambios">
+                <input style="background: linear-gradient(to right, #fe8c00, #f83600); border-color: yellow;"class="btn btn-primary" type="submit" name="update_profile" value="Guardar cambios">
 
               </div>
             </form >
@@ -108,214 +107,222 @@ $('.comments') .hide()
     
       
     <!---->
-      <div class="col-md-6 " style="">
+     
+      
+      
+    </div>
+
+
+
+
+    
+  </main>
+  <div class="col-md-6 " style="margin-left: 80px;left: 200px; margin-top: -350px;position: absolute;">
    
-        <div class="media">
-          <div class="media-left">
-            <img src="{{current_user.profile_pic}}" class="media-object" style="width: 128px; height: 128px; border-radius: 100px;">
-          </div>
-          <div class="media-body">
-            <h2 class="media-heading">{{current_user.firstname}} {{current_user.lastname}}</h2>
-            <p>Sobre mi: {{current_user.about_me}}<br> Ciudad: {{current_user.location}}</p>
-            {% if current_user.isprivate == 1 %}
-            <p><b>Su perfil es privado</b></p>
-            {% endif %}
+    <div class="media">
+      <div class="media-left" >
+        <img src="{{current_user.profile_pic}}" class="media-object" style="width: 128px; height: 128px; border-radius: 100px;">
+      </div>
+      <div class="media-body">
+        <h2 class="media-heading" style="color: white;">{{current_user.name}} </h2>
+        <p style="color: white;margin-top: 20px;">Sobre mi: {{current_user.about_me}}<br> Ciudad: {{current_user.location}}</p>
+        {% if current_user.isprivate == 1 %}
+        <p><b>Su perfil es privado</b></p>
+        {% endif %}
+      
+       <div class="container" >
+       
+        <button style="margin-left: -12px;background: linear-gradient(to right, #fe8c00, #f83600); border-color: yellow;" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal1"><Span class="pull-right"><a >Editar perfil</a></Span></button>
+      
+        
+        <div class="modal fade" id="myModal1" role="dialog">
+          <div class="modal-dialog">
           
-           <div class="container">
            
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal1"><Span class="pull-right"><a >Editar perfil</a></Span></button>
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+              </div>
+              <!--
+                
+              -->
+              <div class="modal-body" >
+                <form action="/profile/edit/{{current_user.id}}" method="POST" class="form form-class" enctype="multipart/form-data">
+                  Nombre: <input type="text" class="form-control"value="{{current_user.name}}" name="firstname"></small><br>
+                  Usuario: <input type="text" class="form-control"value="{{current_user.username}}" name="username"><br>
+                  Correo Electronico : <input type="email" class="form-control"value="{{current_user.email}}" name="email"><br>
+                  Sobre mi : <input type="text" class="form-control"value="{{current_user.about_me}}" name="about_me"><br>
+                  
+                  <label class="btn btn-default btn-file">
+                    Foto de perfil <input type="file" name="file"  class="form-control" style="display: none;"><br>
+                </label><br>
+                  <input type="submit" value="Guardar" class="form-control" >
+              </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+      </div>
+    </div>
+    
+    <div style="width: 600px;" >
+      <hr>
+      
+      {% if msg != '' %}
+      {{msg}}
+      {{clean}}
+      {% endif %}
+      <form method="post" action="/dashboard/new" >
+        <div class="input-group" >
+          <input class="form-control" type="text" name="content" placeholder="Como te sientes hoy..." name="content">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="submit" name="post">Publicar</button>
+          </span>
+        </div>
+      </form><br>
+      {% for post in posts %}
+      
+      <div class="panel panel-default"  >
+        <div class="panel-body">
+            {% if "media" in post.content %}
+            {% set media1 = post.content.split(',') %}
+            {% if media1[2] %}
+            <p>
+              <embed src="{{media1[1]}}" width="100%" height="100%"><br>
+              <b>{{media1[2]}}</b></p>
+              {% else %}
+            <p><embed src="{{media1[1]}}" width="100%" height="100%"><br></p>
+              {% endif %}
+            {% else %}
+              <p>
+                <b>{{post.content}}</b>
+                </p>
+              {% endif %}
+         
+          <small><span>Publicado {{post.date}}</span></small> <br>
+        </div>
+        <div class="panel-footer">
+          
+          {% set likes2= likes.query.filter_by(user_id=post.id).first() %}
+          <small><span><a href="/addlike/{{post.id}}" >Me gusta </a>{{likes2.total}}</span></small>
+          <small></small>
+          <a href="#expe{{post.id}}" class="fa fa fa-times closer" >Comentarios</a>
+          <div>
+            <form action="/dashboard/new_comment/{{post.id}}" method="POST">
+              <input type="text" name="comment" placeholder="Escriba su comentario">
+              <input type="submit" value="Comentar" class="btn btn-success">
+            </form>
+            <div class="comments" id="expe{{post.id}}">
+            {% set comment1 = comment.query.filter_by(user_id=post.id).all()  %}
+            {% for comments in comment1 %}
+            <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
+            {{comments.text}}
+            {% if current_user.username == comments.username %}
+            <small><a href="/dashboard/del_comment/{{comments.id}}" style="color: red;">Borrar</a></small>
+            {% endif %}<br>
+            {% endfor %}
+          </div>
+          </div>
+          <small><span class="pull-right "><a class="text-danger btn btn-danger text-light btn-sm" href="/dashboard/delete/{{post.id}}">Borrar</a></span></small>
+          
+          <div class="container">
+          
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><Span class="pull-right"><a class="text-white" >Editar</a></Span></button>
           
             
-            <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog">
               
-               
+           
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"></h4>
                   </div>
-                  <!--
-                    
-                  -->
-                  <div class="modal-body">
-                    <form action="/profile/edit/{{current_user.id}}" method="POST" class="form form-class" enctype="multipart/form-data">
-                      Nombre: <input type="text" class="form-control"value="{{current_user.firstname}}" name="firstname"></small><br>
-                      Apellido : <input type="text" class="form-control"value="{{current_user.lastname}}" name="lastname"><br>
-                      Usuario: <input type="text" class="form-control"value="{{current_user.username}}" name="username"><br>
-                      Correo Electronico : <input type="email" class="form-control"value="{{current_user.email}}" name="email"><br>
-                      Sobre mi : <input type="text" class="form-control"value="{{current_user.about_me}}" name="about_me"><br>
-                      
-                      <label class="btn btn-default btn-file">
-                        Foto de perfil <input type="file" name="file"  class="form-control" style="display: none;"><br>
-                    </label><br>
-                      <input type="submit" value="Guardar" class="form-control" >
-                  </form>
-                </div>
-                </div>
-                
-              </div>
-            </div>
-            
-          </div>
-          </div>
-        </div>
-       
-
-        <hr>
-
-        
-        <div>
-          
-          {% if msg != '' %}
-          {{msg}}
-          {{clean}}
-          {% endif %}
-          <form method="post" action="/dashboard/new">
-            <div class="input-group">
-              <input class="form-control" type="text" name="content" placeholder="Como te sientes hoy..." name="content">
-              <span class="input-group-btn">
-                <button class="btn btn-success" type="submit" name="post">Publicar</button>
-              </span>
-            </div>
-          </form><br>
-          {% for post in posts %}
-          
-          <div class="panel panel-default">
-            <div class="panel-body">
-                {% if "media" in post.content %}
-                {% set media1 = post.content.split(',') %}
-                {% if media1[2] %}
-                <p>
-                  <embed src="{{media1[1]}}" width="100%" height="100%"><br>
-                  <b>{{media1[2]}}</b></p>
-                  {% else %}
-                <p><embed src="{{media1[1]}}" width="100%" height="100%"><br></p>
-                  {% endif %}
-                {% else %}
-                  <p>
-                    <b>{{post.content}}</b>
-                    </p>
-                  {% endif %}
-             
-              <small><span>Publicado {{post.date}}</span></small> <br>
-            </div>
-            <div class="panel-footer">
-              
-              {% set likes2= likes.query.filter_by(pid=post.id).first() %}
-              <small><span><a href="/addlike/{{post.id}}" >Me gusta </a>{{likes2.total}}</span></small>
-              <small></small>
-              <a href="#expe{{post.id}}" class="fa fa fa-times closer" >Comentarios</a>
-              <div>
-                <form action="/dashboard/new_comment/{{post.id}}" method="POST">
-                  <input type="text" name="comment" placeholder="Escriba su comentario">
-                  <input type="submit" value="Comentar" class="btn btn-success">
-                </form>
-                <div class="comments" id="expe{{post.id}}">
-                {% set comment1 = comment.query.filter_by(pid=post.id).all()  %}
-                {% for comments in comment1 %}
-                <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
-                {{comments.text}}
-                {% if current_user.username == comments.username %}
-                <small><a href="/dashboard/del_comment/{{comments.id}}" style="color: red;">Borrar</a></small>
-                {% endif %}<br>
-                {% endfor %}
-              </div>
-              </div>
-              <small><span class="pull-right "><a class="text-danger btn btn-danger text-light btn-sm" href="/dashboard/delete/{{post.id}}">Borrar</a></span></small>
-              
-              <div class="container">
-              
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><Span class="pull-right"><a class="text-white" >Editar</a></Span></button>
-              
-                
-                <div class="modal fade" id="myModal" role="dialog">
-                  <div class="modal-dialog">
                   
-               
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"></h4>
-                      </div>
-                      
-                      <div class="modal-body">
-                        <form action="/dashboard/edit/{{post.id}}" method="POST">
-                          Tipo: <input type="text" name="title" id="title" value={{post.title}}>
-                          <br>
-                          Publicación: <textarea class=" form-control rounded-0" style="max-width: 300px;" name="content" id="content" value={{post.content}}></textarea>
-                          <br>
-                          Autor: <input type="text" name="author" value={{post.author}}> <br>
-                          <input type="submit" value="Comentar">
-                      </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                      </div>
-                    </div>
-                    
+                  <div class="modal-body">
+                    <form action="/dashboard/edit/{{post.id}}" method="POST">
+                      Tipo: <input type="text" name="title" id="title" value={{post.title}}>
+                      <br>
+                      Publicación: <textarea class=" form-control rounded-0" style="max-width: 300px;" name="content" id="content" value={{post.content}}></textarea>
+                      <br>
+                      Autor: <input type="text" name="author" value={{post.author}}> <br>
+                      <input type="submit" value="Comentar">
+                  </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
                 
               </div>
-              <!--modal-->
-            <hr>
             </div>
+            
           </div>
-          
-          {% else %}
-          <div class="panel panel-default">
-            <div class="panel-body">
-          
-          <p>¡¡¡Nada publicado todavía !!!</p>
-          </div>
-          </div>
-          {% endfor %}
-       
+          <!--modal-->
+        <hr>
         </div>
-
       </div>
       
-      <div class="col-md-3">
+      {% else %}
+      <div class="panel panel-default">
+        <div class="panel-body">
+      
+      <p>¡¡¡Nada publicado todavía !!!</p>
+      </div>
+      </div>
+      {% endfor %}
+     
+      
+      
+   
+    </div> 
+      
+
+  </div>
+  <div class="col-md-3" style="position: absolute; left: 1000px;top: 120px;">
        
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h4>Lista de amigos</h4>
+    <div class="panel panel-default" style="border-color: yellow;">
+      <div class="panel-body" >
+        <h4>Lista de amigos</h4>
+        
+          {% if (friends != None) and (friends != "") %}
+          {% for user in friends %}
+          <ul>
             
-              {% if (friends != None) and (friends != "") %}
-              {% for user in friends %}
-              <ul>
-                
-                {% if (User.query.filter_by(username=user).first().firstname != None) and (User.query.filter_by(username=user).first().lastname != None) %}
-                {% if user != ''%}
-                {% set name=User.query.filter_by(username=user).first().firstname+" "+User.query.filter_by(username=user).first().lastname %}
+            {% if (User.query.filter_by(username=user).first().name != None) %}
+            {% if user != ''%}
+            {% set name=User.query.filter_by(username=user).first().name %} 
 
 
-              <li>
+          <li>
 
-                <a href="user/{{user}}">{{ name }}</a> <br>
-                <small><a href="/remfriend/{{user}}" style="color: red;">Eliminar amigo</a></small> 
-              </li><hr></ul>
-            {% endif %}
-              {% else %}
-            No tienes amigos agregados
-            {% endif %}
-              {% endfor %}
-              {% else %}
-            No tienes amigos agregados
-              {% endif %}
-            
-          </div>
-        </div>
+            <a href="user/{{user}}">{{ name }}</a> <br>
+            <small><a href="/remfriend/{{user}}" style="color: red;">Eliminar amigo</a></small> 
+          </li><hr></ul>
+        {% endif %}
+          {% else %}
+        No tienes amigos agregados
+        {% endif %}
+          {% endfor %}
+          {% else %}
+        No tienes amigos agregados
+          {% endif %}
         
       </div>
     </div>
-  </main>
+    
+  </div>
+
   
-  <footer class="container text-center">
-    <ul class="nav nav-pills pull-right">
-      <li>Cerinus Canaria Doméstika</li>
-    </ul>
-  </footer>
+  
+  
+
+ 
 
 {% endblock %}

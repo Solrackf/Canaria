@@ -1,13 +1,12 @@
 {% extends "baseingreso.html" %}
 {% block body %}
+{% for data in res %} 
 <form action="/profile/edit/{{current_user.id}}" method="POST">
-    Nombre: <input type="text" value="{{current_user.firstname}}" name="firstname"><br>
-    Apellido : <input type="text" value="{{current_user.lastname}}" name="lastname"><br>
+    Nombre: <input type="text" value="{{current_user.username}}" name="firstname"><br>
     Correo electronico : <input type="email" value="{{current_user.email}}" name="email"><br>
     Sobre mi : <input type="text" value="{{current_user.about_me}}" name="about_me"><br>
     Foto de perfil: <input type="file" name="profile_pic">
     <input type="submit" value="Save" >
 </form>
-
-
+{% endfor%}
 {% endblock %}

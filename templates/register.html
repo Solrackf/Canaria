@@ -1,49 +1,33 @@
-<html>
-<head>
-<title>Registration</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<style>
-body{
-background: black;
-padding: 20vh;
-}
+{% extends 'base.html' %}
 
-form{
-background: #fff;
-}
-.form-container{
-border-radius: 10px;
-padding: 30px;
-box-shadow: 0px 0px 10px 0px;
-}
-</style>
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% block body %}
+<div>
+    <img class="index-canario" src="../static/images/image.png" alt="">
+</div>
+<div class="form-register" >
+    <form action="/register" method="POST">
+        <div class="sesion" style="text-align: center;"> 
+             <h4 style="font-size: 30px;"> Registro </h4> 
+            
+        
+        </div>
+       
+        <div class="input_text">
+            <ul><input  class="textfield"  type="text" name="email" placeholder="correo electrónico" ></ul>
+            <ul><input class="textfield" type="text" placeholder="Nombre" name="name"></ul>
+            <ul><input class="textfield" type="text" placeholder="Usuario" name="username" required title="Username must contain at least 6 or more characters"></ul>
+            <ul><input class="textfield" type="password" placeholder="Contraseña" name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más"></ul>
+            <ul><input class="textfield" type="password" placeholder="Confirmar contraseña" name="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></ul>
+            <ul><input type="date" class="calendar" name="date" ></ul>
+            <ul style="font-size: 13px;"><input class="radio" type="radio" name="gen" value="female">Femenino <input  type="radio" name="gen" value="male">Masculino</ul>
+            <ul style="font-size: 10px;" class="conditions" id="terms">Al clickear Registrarse, usted acepta nuestros <a href="">Terms</a> y además <br>a leído nuestras <a href="">Politicas</a>, incluyendo <a href="">el uso de Cookies</a>.</ul>
+            <ul style="top: 800px;"><input class="boton"  type="submit" value="Registrarse"></ul>
+            <h1 style="font-size: 25px;font-size: 20px;"> ¿Ya tienes una cuenta?</h1> 
+            <a  href="/" style="font-size: 20px;">Iniciar sesión</a>
+        </div>
+    </form>
+</div>
 
-<div  class="container-fluid class1" >
-<div class="row justify-content-center">
-<div class="col-12 col-sm-6 col-md-3">
-<form action="" method="post"class="form-group form-container">
-<span>
-<fieldset>
-<legend align="center"><h2>Register</h2></legend></fieldset>
-Nombre: <input type="text" class="form-control" placeholder="Enter your First Name" name="first"><br>
-Apellido: <input type="text" class="form-control" placeholder="Enter your Last Name" name="last"><br>
-Usuario: <input type="text" class="form-control" Placeholder="Enter Your username" name="username"><br>
-Correo electronico: <input type="email" class="form-control" placeholder="Enter Your Email" name="email"><br>
-Contraseña: <input type="password" class="form-control" placeholder="Confirm your password" name="pass1"><br>
-Confirmar contraseña: <input type="password" class="form-control" placeholder="Confirm your password" name="pass2"><br>
-Género: <input type="radio" name="gen" value="Male"> Masculino <span>
-<input type="radio" name="gen" value="Female"> Femenino</span><br><br>
-<input type="submit" value="Register" name="submit" align="center" class="btn btn-success form-control"><br><br>
-<small >¿No tienes una cuenta? <a href="login">Iniciar sesión</a></small>
-</span>
-</form>
-</div>
-</div>
-</div>
-</body>
-</html>
+{% endblock %}
