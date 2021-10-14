@@ -170,7 +170,11 @@ $('.comments') .hide()
                 {% endif %}
                 
             <div class="panel-footer">
+<<<<<<< HEAD
               {% set likes2= likes.query.filter_by(user_id=posts.id).first() %}
+=======
+              {% set likes2= likes.query.filter_by(pid=posts.id).first() %}
+>>>>>>> b3b1d86def461902563b1800f789ef493b318e74
               <h5><a href="/addlike/{{posts.id}}">Me gusta</a> {{likes2.total}}</h5> <a href="#expe{{posts.id}}" class="fa fa-caret-down" >Comentarios</a>  
               <div>
                 <form action="/dashboard/new_comment/{{posts.id}}" method="POST">
@@ -178,7 +182,11 @@ $('.comments') .hide()
                   <input type="submit" value="Post Comment" class="btn btn-success">
                 </form>
                 <div class="comments" id="expe{{posts.id}}">
+<<<<<<< HEAD
                 {% set comment1 = comment.query.filter_by(user_id=posts.id).all()  %}
+=======
+                {% set comment1 = comment.query.filter_by(pid=posts.id).all()  %}
+>>>>>>> b3b1d86def461902563b1800f789ef493b318e74
                 {% for comments in comment1 %}
                 <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
                 {{comments.text}}

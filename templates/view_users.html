@@ -68,7 +68,11 @@
 									  Género : <input type="text" class="form-control"value="{{data.gender}}" name="gender"><br>
 									  Ciudad : <input type="text" class="form-control"value="{{data.location}}" name="location"><br>
 									  {% if current_user.rol == 'superadmin'  %}
+<<<<<<< HEAD
 									  Privilegios: <input type="radio" class="checkbox" name="rol" style="width: 15px;height: 15px;" value="yes" {% if data.rol == "yes" %} checked {% endif %}>
+=======
+									  Privilegios: <input type="radio" class="checkbox" name="rol" style="width: 15px;height: 15px;" value="admin" {% if data.rol == "admin" %} checked {% endif %}>
+>>>>>>> b3b1d86def461902563b1800f789ef493b318e74
 									  {% endif %}
 									  <label class="btn btn-default btn-file">
 										Foto de perfil <input type="file" name="file"  class="form-control" style="display: none;"><br>
