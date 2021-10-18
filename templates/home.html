@@ -84,7 +84,7 @@ $('.comments') .hide()
           <div class="panel-body">
             <h4 >{{current_user.name}}</h4>
             <p>Sobre mi: {{current_user.about_me}}</p>
-            <p>Ciudad: {{current_user.location}}</p>
+            
           </div>
         </div>
         
@@ -96,8 +96,8 @@ $('.comments') .hide()
                 {% for req in r %}
                 <li>
                   {%set name=User.query.filter_by(username=req.user_from).first().name%}
-                <a href="/user/{{req.user_from}}">{{name}}</a>
-                <form action="/accept/{{req.id}}" method="POST">
+                <a style="margin-left: 90px;font-size: 20px;" href="/user/{{req.user_from}}">{{name}}</a>
+                <form action="/accept/{{req.id}}" method="POST" style="margin-left: -40px;">
                   <small><button type="Submit" value="Accept" name="acccept" class="btn btn-success btn-sm float-left col-sm-6" style="text-align: center;">Aceptar </button></small></form>
                   <form action="/reject/{{req.id}}" method="POST"><input type="Submit" value="Rechazar" name="reject" class="btn btn-danger btn-sm float-right col-sm-6" ></form>
 
@@ -111,7 +111,7 @@ $('.comments') .hide()
         </div>
         
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5" >
         <!-- post form -->
         {% if msg != '' %}
         <div class="alert alert-danger">
@@ -151,7 +151,7 @@ $('.comments') .hide()
           <div class="panel panel-default" >
             <div class="panel-header">
               <span> <a href="/user/{{posts.username}}">{{posts.author}}</a></span>
-              <span>On {{posts.date}}</span>
+              <span>Publicado a las {{posts.date}}</span>
             </div>
             <div class="panel-body">
               {% if "media" in posts.content %}
@@ -170,23 +170,23 @@ $('.comments') .hide()
                 {% endif %}
                 
             <div class="panel-footer">
-<<<<<<< HEAD
+
               {% set likes2= likes.query.filter_by(user_id=posts.id).first() %}
-=======
-              {% set likes2= likes.query.filter_by(pid=posts.id).first() %}
->>>>>>> b3b1d86def461902563b1800f789ef493b318e74
+
+              {% set likes2= likes.query.filter_by(user_id=posts.id).first() %}
+
               <h5><a href="/addlike/{{posts.id}}">Me gusta</a> {{likes2.total}}</h5> <a href="#expe{{posts.id}}" class="fa fa-caret-down" >Comentarios</a>  
               <div>
                 <form action="/dashboard/new_comment/{{posts.id}}" method="POST">
                   <input type="text" name="comment" placeholder="Escriba su comentario">
-                  <input type="submit" value="Post Comment" class="btn btn-success">
+                  <input type="submit" value="Comentar" class="btn btn-success">
                 </form>
                 <div class="comments" id="expe{{posts.id}}">
-<<<<<<< HEAD
+
                 {% set comment1 = comment.query.filter_by(user_id=posts.id).all()  %}
-=======
-                {% set comment1 = comment.query.filter_by(pid=posts.id).all()  %}
->>>>>>> b3b1d86def461902563b1800f789ef493b318e74
+
+                {% set comment1 = comment.query.filter_by(user_id=posts.id).all()  %}
+
                 {% for comments in comment1 %}
                 <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
                 {{comments.text}}
@@ -206,6 +206,10 @@ $('.comments') .hide()
           {% endfor %}
           {% endif %}
 
+          {% for post in posts %}
+      
+      {% endfor %}
+
           <!-- ./post -->
         </div>
         <!-- ./feed -->
@@ -217,12 +221,5 @@ $('.comments') .hide()
   <!-- ./main -->
 
   <!-- footer -->
-  <footer class="container text-center">
-    <ul class="nav nav-pills pull-right">
-      <li>Serinus Canaria Doméstika</li>
-    </ul>
-  </footer>
-  <!-- ./footer -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+  
 {% endblock %}
