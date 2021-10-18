@@ -71,7 +71,7 @@ $('.comments') .hide()
           </div>
           <div class="media-body" style="color: white;">
             <h2 class="media-heading">{{user.firstname}} {{user.lastname}}</h2>
-            <p>Sobre mi: {{user.about_me}}<br> Ciudad: {{user.location}}</p>
+            <p>Sobre mi: {{user.about_me}}<br> 
            
            {% if user.isprivate == 1 %}
            <small><p><b>Cuenta privada</b></p></small>
@@ -302,7 +302,7 @@ $('.comments') .hide()
           
           </span>
           <div class='panel-footer'>
-            {% set likes2= likes.query.filter_by(pid=post.id).first() %}
+            {% set likes2= likes.query.filter_by(user_id=post.id).first() %}
             <small><span><a href="/addlike/{{post.id}}" >Me gusta </a>{{likes2.total}}</span></small>
             <small></small>
             <a href="#expe{{post.id}}" class="fa fa fa-times closer" >Comentarios</a>
@@ -312,7 +312,7 @@ $('.comments') .hide()
                 <input type="submit" value="Comentar" class="btn btn-success">
               </form>
               <div class="comments" id="expe{{post.id}}">
-              {% set comment1 = comment.query.filter_by(pid=post.id).all()  %}
+              {% set comment1 = comment.query.filter_by(user_id=post.id).all()  %}
               {% for comments in comment1 %}
               <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
               {{comments.text}}
@@ -367,7 +367,7 @@ $('.comments') .hide()
       
       </span>
       <div class='panel-footer'>
-        {% set likes2= likes.query.filter_by(pid=post.id).first() %}
+        {% set likes2= likes.query.filter_by(user_id=post.id).first() %}
         <small><span><a href="/addlike/{{post.id}}" >Me gusta </a>{{likes2.total}}</span></small>
         <small></small>
         <a href="#expe{{post.id}}" class="fa fa fa-times closer" >Comentarios</a>
@@ -377,7 +377,7 @@ $('.comments') .hide()
             <input type="submit" value="Comentar" class="btn btn-success">
           </form>
           <div class="comments" id="expe{{post.id}}">
-          {% set comment1 = comment.query.filter_by(pid=post.id).all()  %}
+          {% set comment1 = comment.query.filter_by(user_id=post.id).all()  %}
           {% for comments in comment1 %}
           <b><a href="/user/{{comments.username}}">{{comments.username}}</a></b> -
           {{comments.text}}
@@ -426,14 +426,14 @@ $('.comments') .hide()
      
         {% if current_user.username != user.username %}
         
-        <div class="panel panel-default col-md-6" style="margin-left: 600px; position: absolute; top:70px;width: 300px;" >
+        <div class="panel panel-default col-md-6" style="margin-left: 600px; position: absolute; top:70px;width: 300px;color: black;" >
           <div class="panel-body">
-            <h4>Amigos</h4>
+            <h4>Amigos </h4>
             <ul>
               {% if friends != None %}
               {% for user1 in friends %}
-{% set lname=User.query.filter_by(username=user1).first().lastname %}
-{% set fname=User.query.filter_by(username=user1).first().firstname %}
+
+{% set fname=User.query.filter_by(username=user1).first().name %}
 
 {%if (user1 != '') or (user1 != None) or (user1 != ' ') %}
               <li>
@@ -458,7 +458,7 @@ $('.comments') .hide()
         <div class="panel panel-default col-md-12"  >
           <div class="panel-body">
             <h4>Amigos</h4>
-            <ul>
+            <ul >
               {% if friends != None %}
               {% for user1 in friends %}
 {% set lname=User.query.filter_by(username=user1).first().lastname %}

@@ -2,7 +2,7 @@ from flask import *
 from flask_sqlalchemy import *
 from werkzeug.security import *
 from datetime import datetime
-from flask_login import LoginManager, login_required, logout_user, current_user, login_user, UserMixin, current_user
+from flask_login import LoginManager, login_required, logout_user, current_user, login_user, UserMixin
 import random
 import string
 import sqlite3 as sql
@@ -60,20 +60,12 @@ class Posts(Base):
     author=db.Column(db.String, default="N/A")
     username=db.Column(db.String) 
     date=db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey("User.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("User.id", onupdate="cascade", ondelete="cascade"), nullable=False)
     users = db.relationship('User', backref=db.backref('usuarios', lazy=True))
     
     
     def __repr__(self):
         return "Publicacion " + str(self.user_id)
-
-class emailverification(Base):
-    __tablename__ = 'emailverify'
-    email = db.Column(db.String)
-    uid = db.Column(db.Integer)
-    ehash = db.Column(db.String)
-    def __repr__(self):
-        return "Email Verification " + str(self.id)
 
 class friend_requests(Base):
     __tablename__="friend_resquests"    
@@ -85,14 +77,14 @@ class comments(Base):
     text = db.Column(db.String(140))
     username = db.Column(db.String(32))
     time = db.Column(db.DateTime(), default=datetime.utcnow, index=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("User.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("User.id", onupdate="cascade", ondelete="cascade"), nullable=False)
     users = db.relationship('User', backref=db.backref('usuarios1', lazy=True))
 
 class likes(Base):
     __tablename__ = "likes"
     total = db.Column(db.Integer)
     liked_by = db.Column(db.String, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("User.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("User.id", onupdate="cascade", ondelete="cascade"), nullable=False)
     users = db.relationship('User', backref=db.backref('usuarios2', lazy=True))
 #Variables para limpiar errores y mandar mensajes flash.
 def errorclean():
@@ -254,7 +246,7 @@ def new_post():
                 db.session.add(new_post)
                 db.session.commit()
                 getd=Posts.query.all()[-1].id
-                like= likes(pid=int(getd),total=0)
+                like= likes(user_id=int(getd),total=0)
                 db.session.add(like)
                 db.session.commit()
                 return redirect(request.referrer)
@@ -282,7 +274,7 @@ def new_post():
                 db.session.add(new_post)
                 db.session.commit()
                 getd=Posts.query.all()[-1].id
-                like= likes(pid=int(getd),total=0)
+                like= likes(user_id=int(getd),total=0)
                 db.session.add(like)
                 db.session.commit()
                 return redirect(request.referrer)
@@ -377,22 +369,7 @@ def profile_info_change(id):
         info.name=request.form['firstname']
         info.email=request.form['email']
         info.about_me = request.form['about_me']
-<<<<<<< HEAD
         profilepic=request.files.get('file')
-        info.rol= request.form.get("rol")
-        if info.rol =="yes":
-            info.rol="admin"
-        
-        else: info.rol="usuario"
-
-=======
-        info.gender = request.form['gender']
-        info.location = request.form['location']
-        profilepic=request.files.get('file')
-        info.rol= request.form.get("rol")
-        if rol =="yes":
-            info.rol="admin"
->>>>>>> b3b1d86def461902563b1800f789ef493b318e74
         if profilepic: 
             file=request.files.get('file')
             filename= file.filename
@@ -542,15 +519,28 @@ def delete_users(id):
     db.session.commit()
     return redirect(request.referrer)
 
-
+#Editar usuarios
+@app.route("/edit_users/<int:id>", methods=['GET', 'POST'])
+def edit_users(id):
     if request.method == "POST":
         info = User.query.get(id)
-        info.rol= request.form.get("rol")
-        if rol =="yes":
-            info.rol="admin"
+        info.username = request.form['username']
+        info.name=request.form['firstname']
+        info.email=request.form['email']
+        info.about_me = request.form['about_me']
+        profilepic=request.files.get('file')
+        if profilepic: 
+            file=request.files.get('file')
+            filename= file.filename
+            new_filename=current_user.username+"."+filename.split('.')[1]
+            file.save(os.path.join(app.config['UPLOAD_PROFILE'], new_filename))
+            info.profile_pic="/static/images/profile/"+new_filename
             db.session.commit()
+            return redirect(request.referrer)
+        db.session.commit()
         return redirect(request.referrer)
-
+    else:
+        return redirect(request.referrer)
 #ver usuarios
 @app.route("/view_users", methods=['GET','POST'])
 def view_user():
@@ -561,6 +551,19 @@ def view_user():
     data = cur.fetchall();  
     return render_template("view_users.html", res = data)
 
+#Rol administrador
+@app.route("/profile/rol/<int:id>",methods=['GET','POST'])
+def rol_info_change(id):
+    if request.method == "POST":
+        info = User.query.get(id)
+        info.rol= request.form.get("rol")
+        if info.rol =="yes":
+            info.rol="admin"
+        else: info.rol =="usuario"
+        db.session.commit()
+        return redirect(request.referrer)
+    else:
+        return redirect("/profile")
 #ver admins
 @app.route("/view_admins", methods=['GET','POST'])
 def view_admins():
@@ -575,7 +578,6 @@ def view_admins():
 #Verificar sesión
 @login_manager.user_loader
 def load_user(user_id):
-    """Compruebe si el usuario ha iniciado sesión en cada página."""
     if user_id is not None:
         return User.query.get(user_id)
     return None    
@@ -583,16 +585,18 @@ def load_user(user_id):
 #Autorizar la sesión
 @login_manager.unauthorized_handler
 def unauthorized():
-    """Redirigir a los usuarios no autorizados a la página de inicio de sesión."""
     return redirect(url_for('index'))
 
 #Cerrar sesión
 @app.route("/logout")
 @login_required
 def logout_page():
-    """User log-out logic."""
     logout_user()
     return redirect("/")
+
+
+#---------Zona de pruebas------------------#
+
 
 #Arranque de la red social
 if __name__ == "__main__":

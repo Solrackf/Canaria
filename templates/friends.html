@@ -27,21 +27,6 @@
     </form>
   </div>
 </nav>
-  <p align="center">Amigos</p>
-  <div align="center" class="col" style="width: 50%;margin-left: 25%;">
-  {% for user in friends %}
-  {% set users = User.query.filter_by(username=user).first() %}
-  {% if (users != '') and (users != None) %}
-  <div class="panel panel-default">
-    <div class="panel-body">
-        <embed src="{{users.profile_pic}}" width="10%" height="10%"><br>
-<a href="/user/{{users.username}}" style="top: 100%;">{{ users.firstname }}
-{{users.lastname}}</a><br>
-<a href="remfriend/{{users.username}}" class="btn btn-small btn-sm btn-danger" >Amigo</a>
-</div></div>
-{% endif %}
-{% else %}
-No tienes amigos agregados
-{% endfor %}
-</div>
+
+
 {% endblock %}
