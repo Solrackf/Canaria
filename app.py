@@ -377,7 +377,6 @@ def profile_info_change(id):
         info.name=request.form['firstname']
         info.email=request.form['email']
         info.about_me = request.form['about_me']
-<<<<<<< HEAD
         profilepic=request.files.get('file')
         info.rol= request.form.get("rol")
         if info.rol =="yes":
@@ -385,14 +384,6 @@ def profile_info_change(id):
         
         else: info.rol="usuario"
 
-=======
-        info.gender = request.form['gender']
-        info.location = request.form['location']
-        profilepic=request.files.get('file')
-        info.rol= request.form.get("rol")
-        if rol =="yes":
-            info.rol="admin"
->>>>>>> b3b1d86def461902563b1800f789ef493b318e74
         if profilepic: 
             file=request.files.get('file')
             filename= file.filename
