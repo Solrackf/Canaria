@@ -1,0 +1,51 @@
+{% from 'macros/form.html' import render_form %}
+{% extends 'layout.html' %}
+
+{% block body %}        
+<section class="hero is-fullheight is-justify-content-center">
+  <div class="columns is-justify-content-center is-align-items-center">
+    <div class="column is-one-quarter">
+      <img class="is-4by5" src="../static/images/image.jpg" alt="">
+    </div>
+    <div class="column is-one-quarter">
+      <div class="box p-6">
+        <h1 class="title has-text-centered">Iniciar sesión</h1>
+        <p class="subtitle has-text-centered">Serinus Canaria Doméstica</p>
+        <form action="" method="post">
+          {{ form.hidden_tag() }}
+          <div class="field my-3">
+            <p class="control has-icons-left has-icons-right">
+            {{ render_form(form.email, class_='input', placeholder='Correo electrónico') }}
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            </p>
+          </div>
+          <div class="field my-3">
+            <p class="control has-icons-left">
+            {{ render_form(form.password, class_='input', placeholder='Contraseña') }}
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+            </p>
+          </div>
+          <div class="control my-3">
+            {{ render_form(form.submit, class_='button is-link is-fullwidth is-medium') }}
+          </div>
+        </form>
+      </div>
+      <div class="box my-2">
+        <p class="is-size-6 has-text-centered">¿No tienes una cuenta? <a href="{{ url_for('user.signup') }}">Crear cuenta</a></p>
+      </div>
+      <div class="box my-2">
+        <p class="is-size-6 has-text-centered">Olvidaste tu contraseña? <br>
+          <a href="{{ url_for('user.reset') }}" class="has-text-danger">Restrablecer la contraseña</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}
+{% block script %}
+{{ super() }}
+{% endblock %}

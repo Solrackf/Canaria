@@ -1,0 +1,48 @@
+{% from 'macros/form.html' import render_form %}
+{% extends 'layout.html' %}
+
+{% block body %}        
+<section class="hero is-fullheight is-justify-content-center">
+  <div class="box column is-one-third is-offset-one-third">
+    <h5 class="title has-text-centered">Serinus Canaria</h5>
+    <p class="subtitle has-text-centered">Regístrese y disfrute <br>
+      todo el contenido que ofrece nuestra red social</p>
+    <form action="" method="post">
+      {{ form.hidden_tag() }}
+      <div class="field my-2">
+        <p class="control has-icons-left has-icons-right">
+        {{ render_form(form.email, class_='input', placeholder='Correo electrónico') }}
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        </p>
+      </div>
+      <div class="control my-2">
+        {{ render_form(form.name, class_='input', placeholder='Nombre completo') }}
+      </div>  
+      <div class="control my-2">
+        {{ render_form(form.username, class_='input', placeholder='Usuario') }}
+      </div>  
+      <div class="field my-2">
+        <p class="control has-icons-left">
+        {{ render_form(form.password, class_='input', placeholder='Contraseña') }}
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        </p>
+      </div>
+      <div class="control my-2">
+        {{ render_form(form.submit, class_='button is-link is-fullwidth is-medium') }}
+      </div>
+    </form>
+  </div>
+  <div class="box my-2 column is-one-third is-offset-one-third">
+    <p class="is-size-6 has-text-centered">ya tiene una cuenta. <br>
+      <a href="{{ url_for('user.login') }}" class="has-text-link">Iniciar sesión</a>
+    </p>
+  </div>
+</section>
+{% endblock body %}
+{% block script %}
+{{ super() }}
+{% endblock %}

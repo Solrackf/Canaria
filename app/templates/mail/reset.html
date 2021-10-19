@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}        
+<div class="box">
+    <h1 class="title has-text-centered">Solicitud de restablecimiento de contraseña</h1>
+    <p class="subtitle has-text-centered">
+        ¡Hola! Hemos recibido una solicitud para restablecer su contraseña de Serinus Canaria. <br>
+        si no ha emitido esta solicitud, ignore este correo electrónico.
+    </p>
+    <h5 class="mt-5">haga clic en este botón para restablecer su contraseña</h5>
+    <a class="my3 button is-info" href="{{ url_for('user.reset_request', token=token, _external=True) }}">Restablecer contraseña</a>
+</div>
+{% endblock body %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}        
+<div class="box">
+    <h1 class="title has-text-centered">Solicitud para restablecer la contraseña</h1>
+    <p class="subtitle has-text-centered">
+        
+    ¡Hola! Este es un correo electrónico para la confirmación de su cuenta de inicio de sesión de Serinus Canaria. <br>
+    Si no eres tú, simplemente puedes ignorar este correo electrónico.
+    </p>
+    <h5 class="mt-5">haga clic a continuación para confirmar su correo electrónico</h5>
+    <a class="my3 button is-info" href="{{ url_for('user.confirmation', token=token, _external=True) }}">Confirmar correo electrónico</a>
+</div>
+{% endblock body %}

@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+{% block main %}        
+<div class="container is-fullhd has-background-white p-2">
+  <div class="columns">
+
+    <div class="column is-one-quarter image">
+      <img class="is-rounded is-1by1" src="{{ url_for('user.static', filename='images/'+current_user.avatar) }}">
+    </div>
+    <div class="column is-align-self-center is-one-quarter">
+      <h3 class="title has-text-centered">{{ user.followers.count() -1 }}</h3>
+      <a href="{{ url_for('user.user_followers', username=user.username) }}">
+        <h5 class="subtitle has-text-centered">Seguidores</h5>
+      </a>
+    </div>
+    <div class="column is-align-self-center is-one-quarter">
+      <h3 class="title has-text-centered">{{ user.followed.count() -1 }}</h3>
+      <a href="{{ url_for('user.user_followed', username=user.username) }}">
+        <h5 class="subtitle has-text-centered">Seguidos</h5>
+      </a>
+    </div>
+    {% if current_user == user %}
+    <div class="column is-align-self-center px-6">
+      <a href="{{ url_for('user.setting') }}" class="has-text-dark">
+        <i class="fas fa-cog fa-2x"></i>
+      </a>
+    </div>
+    {% else %}
+    <a href="{{ url_for('user.un_follow', username = user.username) }}" style="margin: auto 0">
+      {% if current_user.is_following(user) %}
+        <button class="button is-danger is-outlined is-rounded is-medium">Dejar de seguir</button>
+      {% else %}
+        <button class="button is-info is-rounded is-medium">Seguir</button>
+      {% endif %}
+    </a>
+    {% endif %}
+
+  </div>
+  <div class="columns px-4">
+    <div class="column">
+      <h6 class="title">
+        {{ user.username }}
+      </h6>
+      <h6 class="subtitle">
+        {{ user.name }}
+      </h6>
+    </div>
+  </div>
+  <div class="tabs is-centered is-boxed is-large">
+    <ul>
+      <li class="is-active">
+        <a>
+          <i class="far fa-images"></i>
+          <span class="mx-2">Publicaciones</span> 
+        </a>
+      </li>
+      <li>
+        <a>
+          <i class="far fa-heart"></i>
+          <span class="mx-2">Me gustas</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="columns" id="posts">
+    {% for post in user.posts.all() %}
+    <div class="column is-one-third image">
+      <img src="{{ url_for('post.static', 
+      filename='images/'+post.get_images()[0]) }}">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="columns" id="likes">
+    {% for post in user.posts_liked.all() %}
+    <div class="column is-one-third image">
+      <img src="{{ url_for('post.static', 
+      filename='images/'+post.get_images()[0]) }}">
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock main %}
