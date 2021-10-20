@@ -2,20 +2,19 @@
 
 Este es un proyecto realizado en mintic, escrito en el framework **Flask** en **Python**
 
-
-
 ---
-## Todo
-1. Add Fulltext Search using `flask_whooshalchemy`
-**Error :** `/venv/lib/python3.8/site-packages/flask_whooshalchemy.py`
-`NameError: name 'unicode' is not defined`
+
+
+|  |  | 
 ---
 ### Integrantes
-Kelly Arboleda
-Jhonatan Guerrero
-Walter Olmos
-Carlos Escorcia
-Brian Jaraba
+|  |  | 
+| ---- | 
+| Kelly Arboleda |
+| Jhonatan Guerrero |
+| Walter Olmos | 
+| Carlos Escorcia |
+| Brian Jaraba |
 
 Configure aquí su servidor de mensajeria
 |  |  | 

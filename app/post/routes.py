@@ -25,7 +25,7 @@ def home(post_id):
 @login_required
 def new():
     if not (current_user.is_authenticated and current_user.is_confirmed):
-        flash('Go and confirm your email, Baka', 'link')
+        flash('Primero debes confirmar tu cuenta', 'link')
         return redirect(url_for('main.home'))
     form = PostForm()
     if form.validate_on_submit():
