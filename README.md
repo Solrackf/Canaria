@@ -1,10 +1,8 @@
 ## Instagram Clone
 
-This project is an example for instagrame clone using **Flask** in **Python**
+Este es un proyecto realizado en mintic, escrito en el framework **Flask** en **Python**
 
-<p align="center">
-  <img src="/app/static/images/favico/favicon-512x512.png" width=300 height=300 alt="Instagram Clone"/>
-</p>
+
 
 ---
 ## Todo
@@ -12,25 +10,28 @@ This project is an example for instagrame clone using **Flask** in **Python**
 **Error :** `/venv/lib/python3.8/site-packages/flask_whooshalchemy.py`
 `NameError: name 'unicode' is not defined`
 ---
-### Before running
-before running project there are some `env` variable you need to set
+### Integrantes
+Kelly Arboleda
+Jhonatan Guerrero
+Walter Olmos
+Carlos Escorcia
+Brian Jaraba
 
-
+Configure aquí su servidor de mensajeria
 |  |  | 
 | ---- | --- |
 | MAIL_USERNAME | < Your E-Mail >  |   
 | MAIL_PASSWORD | < Your E-Mail Password > |
+Escriba estos comandos en el terminal
 
-Other than this you need to run a command in terminal
-
-```BASH
+flask db migrate
 flask db upgrade
-```
-This command should create a `Database/database.db` file in igclone folder
+
+Realizando los pasos se debe crear un archivo en `Database/database.db`
 
 ### Run App
-To Run app you can simply type
+Con el run.py arranca la aplicación
 ```
-flask run
+
 ```
-and this will run this flask app at `localhost:5000` 
+Arrancará por el puerto predeterminado `localhost:5000` 

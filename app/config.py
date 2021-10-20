@@ -22,3 +22,5 @@ DROPZONE_UPLOAD_MULTIPLE=True
 DROPZONE_PARALLEL_UPLOADS=3
 DROPZONE_UPLOAD_BTN_ID='submit'
 DROPZONE_UPLOAD_ACTION='post.upload_image'
+ALLOWED_HOSTS = [".herokuapp.com", ".serinus.herokuapp.com"]
+WTF_CSRF_ENABLED=False
